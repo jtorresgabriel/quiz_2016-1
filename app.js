@@ -41,6 +41,19 @@ app.use(function(req, res, next) {
    next();
 });
 
+//Autologut
+app.use(function(req, res, next){
+        if (req.session.user){
+            if( req.session.user.expires - new Date().getTime() <=0){
+                delete req.session.user;
+            }else{
+                req.session.user.expires = new Date().getTime() + 120000;
+            };
+        };
+        next();
+    });
+
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
