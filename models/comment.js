@@ -6,6 +6,9 @@ module.exports = function(sequelize, DataTypes) {
                           { text: { type: DataTypes.STRING,
                           	        validate: { notEmpty: {msg: "Falta Comentario"}}
                           	      },
+                          	AuthorId: { type: DataTypes.INTEGER,
+                          	        validate: { notEmpty: {msg: "Falta Usuario"}}
+                          	      },
                             accepted: { type: DataTypes.BOOLEAN,
       	                                defaultValue: false
                                       }
