@@ -46,22 +46,22 @@ router.delete('/users/:userId(\\d+)',   sessionController.loginRequired,
 										userController.destroy);  // borrar cuenta
 
 // Definición de rutas de /quizzes
-router.get('/quizzes',                     	quizController.index);
-router.get('/quizzes/:quizId(\\d+)',       	quizController.show);
-router.get('/quizzes/:quizId(\\d+)/check', 	quizController.check);
-router.get('/quizzes/new',                 	sessionController.loginRequired, 
-											quizController.new);
-router.post('/quizzes',                    	sessionController.loginRequired, 
-											quizController.create);
-router.get('/quizzes/:quizId(\\d+)/edit',  	sessionController.loginRequired, 
-										   	quizController.ownershipRequired, 
-										   	quizController.edit);
-router.put('/quizzes/:quizId(\\d+)',       	sessionController.loginRequired, 
-											quizController.ownershipRequired, 
-											quizController.update);
-router.delete('/quizzes/:quizId(\\d+)',    	sessionController.loginRequired, 
-											quizController.ownershipRequired, 
-											quizController.destroy);
+router.get('/quizzes.:format?',            	quizController.index);
+router.get('/quizzes/:quizId(\\d+).:format?',   quizController.show);
+router.get('/quizzes/:quizId(\\d+)/check', 		quizController.check);
+router.get('/quizzes/new',                 		sessionController.loginRequired, 
+												quizController.new);
+router.post('/quizzes',                    		sessionController.loginRequired, 
+												quizController.create);
+router.get('/quizzes/:quizId(\\d+)/edit',  		sessionController.loginRequired, 
+										   		quizController.ownershipRequired, 
+										   		quizController.edit);
+router.put('/quizzes/:quizId(\\d+)',       		sessionController.loginRequired, 
+												quizController.ownershipRequired, 
+												quizController.update);
+router.delete('/quizzes/:quizId(\\d+)',    		sessionController.loginRequired, 
+												quizController.ownershipRequired, 
+												quizController.destroy);
 
 // Definición de rutas de comentarios
 router.get('/quizzes/:quizId(\\d+)/comments/new',  sessionController.loginRequired, 
