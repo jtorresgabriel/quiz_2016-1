@@ -1,4 +1,8 @@
-
+<form method="get" action="/quizzes?search=texto_a_buscar">
+  Introduzca contenido a buscar:
+  <input type="text" name="search" placeholder="Texto a buscar"/>
+  <input type="submit" value="Buscar">
+</form>
 <table>
   <% for (var i in quizzes) { %>        
      <tr>

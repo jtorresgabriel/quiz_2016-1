@@ -32,7 +32,7 @@ exports.ownershipRequired = function(req, res, next){
     }
 };
 
-
+/*
 // GET /quizzes
 exports.index = function(req, res, next) {
 	models.Quiz.findAll()
@@ -44,7 +44,32 @@ exports.index = function(req, res, next) {
 		});
 };
 
+*/
+exports.index = function(req, res) {
 
+ console.log('Param: ' + req.query.search);
+ if(typeof(req.query.search) != 'undefined'){
+   models.Quiz.findAll({
+     where: [
+     "question like ?", '%'+req.query.search+'%']
+     , order: 'question ASC'
+   }
+   ).then(function(quizzes) {
+     if(typeof(quizzes != 'undefined')){
+       res.render('quizzes/index', { quizzes: quizzes});
+     }
+   }
+   ).catch(function(error) { next(error);}
+   )
+ }else{
+   models.Quiz.findAll().then(
+     function(quizzes) {
+       res.render('quizzes/index', { quizzes: quizzes});
+     }
+     ).catch(function(error) { next(error);
+     })
+ }
+};
 // GET /quizzes/:id
 exports.show = function(req, res, next) {
 
